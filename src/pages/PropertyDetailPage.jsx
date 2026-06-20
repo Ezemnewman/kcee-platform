@@ -13,17 +13,17 @@ const FOOTER_LINK_COLUMNS = [
   {
     heading: "Navigation",
     links: [
-      { label: "About Us", href: "#" },
-      { label: "Contact Us", href: "#" },
-      { label: "Privacy Policy", href: "#" },
+      { label: "About Us", href: "/about" },
+      { label: "Contact Us", href: "/contact" },
+      { label: "Privacy Policy", href: "/privacy" },
     ],
   },
   {
     heading: "Support",
     links: [
-      { label: "Terms of Service", href: "#" },
-      { label: "Help Center", href: "#" },
-      { label: "FAQ", href: "#" },
+      { label: "Terms of Service", href: "/terms" },
+      { label: "Help Center", href: "/help" },
+      { label: "FAQ", href: "/faq" },
     ],
   },
 ];

@@ -11,19 +11,22 @@ const FOOTER_LINK_COLUMNS = [
   {
     heading: "Quick Links",
     links: [
-      { label: "About Us", href: "#" },
-      { label: "Terms of Service", href: "#" },
-      { label: "Privacy Policy", href: "#" },
-      { label: "Contact Support", href: "#" },
+      { label: "About Us", href: "/about" },
+      { label: "Terms of Service", href: "/terms" },
+      { label: "Privacy Policy", href: "/privacy" },
+      { label: "Contact Support", href: "/contact" },
     ],
   },
   {
     heading: "Cities",
     links: [
-      { label: "Lagos Real Estate", href: "#" },
-      { label: "Abuja Real Estate", href: "#" },
-      { label: "Port Harcourt Real Estate", href: "#" },
-      { label: "Enugu Real Estate", href: "#" },
+      // TODO: once search filtering reads query params, these become
+      // real city filters instead of just landing on the unfiltered
+      // search page (e.g. /buy?city=lagos)
+      { label: "Lagos Real Estate", href: "/buy" },
+      { label: "Abuja Real Estate", href: "/buy" },
+      { label: "Port Harcourt Real Estate", href: "/buy" },
+      { label: "Enugu Real Estate", href: "/buy" },
     ],
   },
 ];

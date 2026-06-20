@@ -6,21 +6,22 @@ import PropertyCard from "../components/PropertyCard";
 import Pagination from "../components/Pagination";
 import SiteFooter from "../components/SiteFooter";
 import { SEARCH_RESULTS_PROPERTIES, DEMO_USER } from "../data/properties";
+import { SITE_CONFIG } from "../data/siteConfig";
 
 const FOOTER_LINK_COLUMNS = [
   {
     heading: "Company",
     links: [
-      { label: "About Us", href: "#" },
-      { label: "Contact Support", href: "#" },
-      { label: "WhatsApp Us", href: "#" },
+      { label: "About Us", href: "/about" },
+      { label: "Contact Support", href: "/contact" },
+      { label: "WhatsApp Us", href: `https://wa.me/${SITE_CONFIG.whatsappNumber}` },
     ],
   },
   {
     heading: "Legal",
     links: [
-      { label: "Terms of Service", href: "#" },
-      { label: "Privacy Policy", href: "#" },
+      { label: "Terms of Service", href: "/terms" },
+      { label: "Privacy Policy", href: "/privacy" },
     ],
   },
 ];

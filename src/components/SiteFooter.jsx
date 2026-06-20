@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import Icon from "./Icon";
 import { SITE_CONFIG } from "../data/siteConfig";
 
@@ -48,13 +49,22 @@ export default function SiteFooter({ linkColumns = [], fourthColumn = { type: "w
           <div key={column.heading}>
             <h4 className="font-headline-sm text-headline-sm mb-4 text-primary">{column.heading}</h4>
             <ul className="space-y-2 text-on-surface-variant font-body-md">
-              {column.links.map((link) => (
-                <li key={link.label}>
-                  <a href={link.href} className="hover:underline transition-all">
-                    {link.label}
-                  </a>
-                </li>
-              ))}
+              {column.links.map((link) => {
+                const isExternal = link.href.startsWith("http");
+                return (
+                  <li key={link.label}>
+                    {isExternal ? (
+                      <a href={link.href} className="hover:underline transition-all">
+                        {link.label}
+                      </a>
+                    ) : (
+                      <Link to={link.href} className="hover:underline transition-all">
+                        {link.label}
+                      </Link>
+                    )}
+                  </li>
+                );
+              })}
             </ul>
           </div>
         ))}
@@ -70,6 +80,10 @@ export default function SiteFooter({ linkColumns = [], fourthColumn = { type: "w
 }
 
 function FourthColumn({ type, address, email }) {
+  if (type === "none") {
+    return null;
+  }
+
   if (type === "newsletter") {
     return <NewsletterColumn />;
   }
