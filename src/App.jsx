@@ -2,6 +2,7 @@ import { useState } from "react";
 import HomePage from "./pages/HomePage";
 import SearchResultsPage from "./pages/SearchResultsPage";
 import PropertyDetailPage from "./pages/PropertyDetailPage";
+import AgentProfilePage from "./pages/AgentProfilePage";
 
 /**
  * Minimal hand-rolled "router" for now — just enough to preview both
@@ -27,11 +28,15 @@ export default function App() {
         <button onClick={() => setPage("detail")} className={page === "detail" ? "font-bold underline" : ""}>
           Detail
         </button>
+        <button onClick={() => setPage("agent")} className={page === "agent" ? "font-bold underline" : ""}>
+          Agent
+        </button>
       </div>
 
       {page === "home" && <HomePage />}
       {page === "search" && <SearchResultsPage />}
       {page === "detail" && <PropertyDetailPage />}
+      {page === "agent" && <AgentProfilePage />}
     </div>
   );
 }

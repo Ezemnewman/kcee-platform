@@ -374,3 +374,134 @@ export const SIMILAR_LISTINGS = [
     ],
   },
 ];
+
+/**
+ * Demo data for the Agent Profile page. `AGENT_PROFILE` is the agent's
+ * own bio/stats; `AGENT_LISTINGS` are properties they've listed, each
+ * tagged with `listingType` so ListingTabFilter's "For Sale / For Rent
+ * / Shortlet / Land" tabs can actually filter this array instead of
+ * just toggling button styles.
+ *
+ * Reuses PropertyCard's `tag` (verified badge) and the newly added
+ * `typeBadge` (e.g. "For Sale") since this export stacks both badges
+ * on the same card — see PropertyCard.jsx for why those are two
+ * separate optional fields rather than one.
+ */
+export const AGENT_PROFILE = {
+  id: "tunde-bakare",
+  name: "Tunde Bakare",
+  agencyName: "Prime Lagos Realty",
+  verified: true,
+  yearsActive: 5,
+  phone: "+234 801 234 5678",
+  memberSince: "June 2019",
+  photoUrl:
+    "https://lh3.googleusercontent.com/aida-public/AB6AXuAYzObswFO-lo7B4dPCztSAUgLOYkE8u0537uwijrknLH5tf2zSgq6kCdV2l_WDBobjMYwsHTzQQmkhsV3l_cMZvFbDxCsKsY0A8yVwqZOAyVz4wWK_dwQ-o6AxHC-tno3BCfsCHxeiKn1v-X7GCiHmWKfHs36Wezo-InPoQ60dQUqbiXlflSrAlTQUBUuXKDAAoLFxs_5nJ4EoiC6076IyIj_bX5U6WQ-BuOywoWeuM0Km7vc-Xx4yxESyvfQBIdFZiXVZsTAUFz4G",
+  stats: [
+    { icon: "real_estate_agent", label: "Total Active Listings", value: 24 },
+    { icon: "handshake", label: "Properties Sold/Rented", value: 112 },
+    { icon: "event_available", label: "Member Since", value: "June 2019" },
+  ],
+};
+
+export const AGENT_LISTINGS = [
+  {
+    id: "al1",
+    listingType: "For Sale",
+    typeBadge: "For Sale",
+    tag: { label: "Verified", variant: "verified" },
+    title: "Modern 5-Bedroom Detached Duplex",
+    location: "Ikoyi, Lagos",
+    formattedPrice: "₦ 450,000,000",
+    imageUrl:
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuCBIdbm8Qgjx40sO0ioOHqqKewCoYOySNdLvbsSOU5kyMGufO3oV4cT4UoQwNe7aqbu_KwsVTXIRtDFMQKEZEdWGxrHzdXbIg5xPbinDbVcBEfH-n0X7JZwbHvhMJq9u5c1zJmNEYdDDl1kR_6FQ0ihuN81bFrmx9dNpj3FHByB3-S1W5m6UgVYqzAc-BzJs8WnEbq8ean-otErp3lRylkWbED40UdqyvhlsBx2Li4j4JhB1E--V-BEWP9_XiGoh5Rmjbjll2etXvDe",
+    imageAlt: "Modern 5-bedroom detached duplex in Ikoyi, Lagos",
+    details: [
+      { icon: "bed", label: "5" },
+      { icon: "bathtub", label: "6" },
+      { icon: "square_foot", label: "450 sqm" },
+    ],
+  },
+  {
+    id: "al2",
+    listingType: "For Sale",
+    typeBadge: "For Sale",
+    tag: { label: "Verified", variant: "verified" },
+    title: "Waterfront Penthouse Apartment",
+    location: "Victoria Island, Lagos",
+    formattedPrice: "₦ 280,000,000",
+    imageUrl:
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuDhh25m4KhaKUB4O0Z4xBtrhuiKJdWyRMXJiwBlcQHsGPXvySxXa6JAGE5TyFKpuQPDNb6quXDI0EA9p_JoQpMy9DRj2YvRTtXFjGM5VKRgmBRwRN206F3kAFcpAiqNKeo2OvQNlOBJUHsH3Y2JeDCUcheSJ4AjuTfU8Q47KEVbiABNn7QNDmX6qyWMCzGgyKJ0PocNXL49F_uemgAajDhrl2KwRL4sjJ_anaKrvxgO9h5ERjbF1CAvXxYaEpfLGcM_E2M3TUMd_PCt",
+    imageAlt: "Waterfront penthouse apartment in Victoria Island, Lagos",
+    details: [
+      { icon: "bed", label: "3" },
+      { icon: "bathtub", label: "3.5" },
+      { icon: "square_foot", label: "310 sqm" },
+    ],
+  },
+  {
+    id: "al3",
+    listingType: "For Sale",
+    typeBadge: "For Sale",
+    tag: { label: "Verified", variant: "verified" },
+    title: "4-Bedroom Terraced Duplex",
+    location: "Lekki Phase 1, Lagos",
+    formattedPrice: "₦ 120,000,000",
+    imageUrl:
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuCosOPNQk9V8yg93_CZNIvxtzvuzFbxioN9oBz5JlMryxf1gMIW1O0vNro-cQ2xBKuMEEKGPJ90x7UeF8Fgy300G8fH0JdQNtnzHWi9CSuwJCHNnyWJ6Rg2iwQow9xG8xeZak3DQDcJft9w8stpH01maVmhnhF3hB7naN2tCbsq0jEFeu2Fcx858QHUuQivWHYtatemhUKkpzZWXpi3NKfFX1ANssjAeOmMITRrSl6HBQAhlmtrkEAlM1bJLtYyToICk70GaRwMMboS",
+    imageAlt: "4-bedroom terraced duplex in Lekki Phase 1, Lagos",
+    details: [
+      { icon: "bed", label: "4" },
+      { icon: "bathtub", label: "4.5" },
+      { icon: "square_foot", label: "280 sqm" },
+    ],
+  },
+  // Additional demo entries below give the For Rent/Shortlet/Land tabs
+  // something real to show — the Stitch export only designed the "For
+  // Sale" tab's content, so these extend the same agent's catalogue
+  // for the tabs that were left empty.
+  {
+    id: "al4",
+    listingType: "For Rent",
+    typeBadge: "For Rent",
+    tag: { label: "Verified", variant: "verified" },
+    title: "3-Bedroom Serviced Apartment",
+    location: "Ikoyi, Lagos",
+    formattedPrice: "₦ 8,500,000 / year",
+    imageUrl:
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuCVF1Ex1Aks04Kyvr2pesSd1qGAZORCNPaiSR62Vk6bxGcuPNNg6SrvBwy4A5RT-74xHd_amJBGBe1c9ZK_tMHrLhYvyrh7Q9byUZOBY0pzmAZgtegyrZsbpqKQSiE4Rpajce9bp05huLW7TyiXM_CvgyhARZcOTwU8o3us6yGOiPXHUxmlFOkhU2bF1HjFMfzuv1e-_IyUkfKVHRyXUJn07cuHCBxnBX5Bhl0duykHoWnfKz-4W6d523Us_dQEWplbAroOnc3izsQF",
+    imageAlt: "3-bedroom serviced apartment for rent in Ikoyi, Lagos",
+    details: [
+      { icon: "bed", label: "3" },
+      { icon: "bathtub", label: "3" },
+    ],
+  },
+  {
+    id: "al5",
+    listingType: "Shortlet",
+    typeBadge: "Shortlet",
+    title: "Cozy 2-Bedroom Shortlet",
+    location: "Eko Atlantic, Lagos",
+    formattedPrice: "₦ 95,000 / night",
+    imageUrl:
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuAqLVL0V8n4aksIlWNtpqW3qJsgn4RhkJuZAZBgul7OoDB4fBxT8CFFL8br-2EI-FAgY7sIDHASNW7BQ1wBzIMLYYQmf5TqJqFZ_QGZGTrwROPXDykf0wZ2EFr1eCswUQ1nMA_6Xh1Q2y7JpxkRCFZP3JhwRErz0TVWZqMiA9Pu4xqSSVnvz7gsjRN7q6Qg2xz5j2VQZU0jwt255rrONMoWLk-jJCGHrKjjAn_Yz6ak_Z7daIpxlg5TKjjQxy0DJ9wq3DbYmKh9et_w",
+    imageAlt: "Cozy 2-bedroom shortlet in Eko Atlantic, Lagos",
+    details: [
+      { icon: "bed", label: "2" },
+      { icon: "bathtub", label: "2" },
+    ],
+  },
+  {
+    id: "al6",
+    listingType: "Land",
+    typeBadge: "Land",
+    tag: { label: "Verified", variant: "verified" },
+    title: "Prime Residential Plot",
+    location: "Ibeju-Lekki, Lagos",
+    formattedPrice: "₦ 22,000,000",
+    imageUrl:
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuCsvx218V3TyEExGfFif-Z9kQS-htAg5QWGJQZ1yheuEIriVHZK54sKaAPoKFVEprmdtgU4VhrIwa5ac99ryOvhmAx9ZRQiMAqlqNgMn4kMLyaOlKrA6_HRHigVVDydazgK_myYcSxsgc6s-rjWpNK760t_9AX6EhZu1DgJWf83m8TnT0pCkUwqHpqpbTPIjNMTMF3-VXNJBy2da7NdipT9pHXvvK-0YfGaeElZq3CLcUUnKBl65hPuZb0jsFzbz38XwKABh9RHgoQ1",
+    imageAlt: "Prime residential land plot in Ibeju-Lekki, Lagos",
+    details: [{ icon: "square_foot", label: "650 sqm" }],
+  },
+];

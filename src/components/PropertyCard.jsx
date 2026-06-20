@@ -25,6 +25,14 @@ import Icon from "./Icon";
  * `agentAvatarUrl` is optional — the search results page shows a small
  * circular agent photo bottom-right on some cards; the home page never
  * had this, so it's additive and won't affect existing usages.
+ *
+ * `typeBadge` is a second, optional badge (e.g. "For Sale") shown
+ * bottom-left — the agent profile page export stacks a listing-type
+ * badge AND a verified badge on the same card, which `tag` alone can't
+ * express since it's one slot. Kept separate from `tag` because "what
+ * kind of listing is this" and "is this agent verified" are different
+ * facts that happen to both render as small badges, not variants of
+ * the same concept.
  */
 export default function PropertyCard({ property, onFavoriteToggle }) {
   const [isFavorited, setIsFavorited] = useState(property.isFavorited || false);
@@ -53,9 +61,17 @@ export default function PropertyCard({ property, onFavoriteToggle }) {
           alt={property.imageAlt}
         />
 
+        {property.typeBadge && (
+          <div className="absolute top-3 left-3 bg-primary text-white text-[10px] uppercase font-bold px-3 py-1 rounded-full">
+            {property.typeBadge}
+          </div>
+        )}
+
         {property.tag && (
           <div
-            className={`absolute top-3 left-3 px-3 py-1 rounded text-xs font-bold flex items-center gap-1 shadow-sm ${tagStyles}`}
+            className={`absolute ${
+              property.typeBadge ? "bottom-3" : "top-3"
+            } left-3 px-3 py-1 rounded text-xs font-bold flex items-center gap-1 shadow-sm ${tagStyles}`}
           >
             {property.tag.variant !== "info" && (
               <Icon name="verified" className="text-sm" filled />
