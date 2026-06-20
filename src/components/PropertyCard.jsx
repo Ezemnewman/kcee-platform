@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import Icon from "./Icon";
 
 /**
@@ -50,8 +51,8 @@ export default function PropertyCard({ property, onFavoriteToggle }) {
       : "bg-secondary text-on-secondary"; // default: verified-agent gold styling
 
   return (
-    <a
-      href={`/listing/${property.id}`}
+    <Link
+      to={`/listing/${property.id}`}
       className="bg-surface rounded-xl shadow-md overflow-hidden group border border-outline-variant hover:shadow-lg transition-shadow block"
     >
       <div className="relative aspect-video">
@@ -122,6 +123,6 @@ export default function PropertyCard({ property, onFavoriteToggle }) {
           ))}
         </div>
       </div>
-    </a>
+    </Link>
   );
 }

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link, NavLink } from "react-router-dom";
 import Icon from "./Icon";
 
 /**
@@ -8,38 +9,41 @@ import Icon from "./Icon";
  * navLinks is passed in as data rather than hardcoded JSX, so adding
  * a page (e.g. "New Developments") later is a one-line data change,
  * not a markup edit on every page that renders the navbar.
+ *
+ * Uses react-router's NavLink instead of a plain <a> so these links
+ * actually navigate (no more dead href="#") and the active/underline
+ * state is determined automatically by the current URL instead of a
+ * hardcoded `active: true` flag that never changed pages.
  */
 const DEFAULT_LINKS = [
-  { label: "Buy", href: "/buy", active: true },
-  { label: "Rent", href: "/rent" },
-  { label: "Shortlet", href: "/shortlet" },
-  { label: "Land", href: "/land" },
-  { label: "Agents", href: "/agents" },
+  { label: "Buy", to: "/buy" },
+  { label: "Rent", to: "/rent" },
+  { label: "Shortlet", to: "/shortlet" },
+  { label: "Land", to: "/land" },
+  { label: "Agents", to: "/agents/tunde-bakare" },
 ];
 
 export default function Navbar({ links = DEFAULT_LINKS, onListPropertyClick, user }) {
   const [mobileOpen, setMobileOpen] = useState(false);
 
+  const linkClasses = ({ isActive }) =>
+    isActive
+      ? "text-primary border-b-2 border-primary pb-1 transition-colors"
+      : "text-on-surface-variant hover:text-primary transition-colors";
+
   return (
     <header className="bg-surface sticky top-0 z-50 shadow-sm">
       <nav className="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 w-full max-w-container-max mx-auto">
-        <a href="/" className="text-headline-md font-headline-md font-bold text-primary">
+        <Link to="/" className="text-headline-md font-headline-md font-bold text-primary">
           KCEE
-        </a>
+        </Link>
 
         <ul className="hidden md:flex items-center gap-gutter font-label-md text-label-md">
           {links.map((link) => (
             <li key={link.label}>
-              <a
-                href={link.href}
-                className={
-                  link.active
-                    ? "text-primary border-b-2 border-primary pb-1 transition-colors"
-                    : "text-on-surface-variant hover:text-primary transition-colors"
-                }
-              >
+              <NavLink to={link.to} className={linkClasses}>
                 {link.label}
-              </a>
+              </NavLink>
             </li>
           ))}
         </ul>
@@ -85,9 +89,13 @@ export default function Navbar({ links = DEFAULT_LINKS, onListPropertyClick, use
         <ul className="md:hidden flex flex-col gap-stack-sm px-margin-mobile pb-4 font-label-md text-label-md">
           {links.map((link) => (
             <li key={link.label}>
-              <a href={link.href} className="block py-2 text-on-surface-variant">
+              <NavLink
+                to={link.to}
+                onClick={() => setMobileOpen(false)}
+                className="block py-2 text-on-surface-variant"
+              >
                 {link.label}
-              </a>
+              </NavLink>
             </li>
           ))}
           <li>

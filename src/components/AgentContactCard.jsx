@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Icon from "./Icon";
 
 /**
@@ -18,9 +19,9 @@ export default function AgentContactCard({ agent }) {
           {agent.verified && <Icon name="verified" className="text-primary text-[18px]" filled />}
         </div>
         <p className="text-on-surface-variant text-label-md mb-1">{agent.phone}</p>
-        <a href={`/agents/${agent.id}`} className="text-primary font-bold text-label-md hover:underline">
+        <Link to={`/agents/${agent.id}`} className="text-primary font-bold text-label-md hover:underline">
           View Profile
-        </a>
+        </Link>
       </div>
     </div>
   );

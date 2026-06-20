@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 /**
  * A simpler teaser card for "Similar Listings" sections. Deliberately
  * NOT the same component as PropertyCard — this one has a price badge
@@ -8,8 +10,8 @@
  */
 export default function SimilarListingCard({ listing }) {
   return (
-    <a
-      href={`/listing/${listing.id}`}
+    <Link
+      to={`/listing/${listing.id}`}
       className="bg-surface-container-lowest rounded-xl overflow-hidden property-shadow group block"
     >
       <div className="aspect-[16/9] overflow-hidden relative">
@@ -36,6 +38,6 @@ export default function SimilarListingCard({ listing }) {
           ))}
         </div>
       </div>
-    </a>
+    </Link>
   );
 }
