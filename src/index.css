@@ -14,3 +14,9 @@
 .hero-gradient {
   background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4));
 }
+
+/* Soft elevation shadow used across the property detail page's cards
+   (gallery, info card, agent card, similar listings) */
+.property-shadow {
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
+}

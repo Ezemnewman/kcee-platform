@@ -1,11 +1,32 @@
 import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
+import SiteFooter from "../components/SiteFooter";
 import WhatsAppFAB from "../components/WhatsAppFAB";
 import SearchBar from "../components/SearchBar";
 import PropertyCard from "../components/PropertyCard";
 import CategoryCard from "../components/CategoryCard";
 import CityCard from "../components/CityCard";
 import { FEATURED_PROPERTIES, CATEGORIES, POPULAR_CITIES } from "../data/properties";
+
+const FOOTER_LINK_COLUMNS = [
+  {
+    heading: "Quick Links",
+    links: [
+      { label: "About Us", href: "#" },
+      { label: "Terms of Service", href: "#" },
+      { label: "Privacy Policy", href: "#" },
+      { label: "Contact Support", href: "#" },
+    ],
+  },
+  {
+    heading: "Cities",
+    links: [
+      { label: "Lagos Real Estate", href: "#" },
+      { label: "Abuja Real Estate", href: "#" },
+      { label: "Port Harcourt Real Estate", href: "#" },
+      { label: "Enugu Real Estate", href: "#" },
+    ],
+  },
+];
 
 export default function HomePage() {
   const handleSearch = (filters) => {
@@ -105,7 +126,7 @@ export default function HomePage() {
         </section>
       </main>
 
-      <Footer />
+      <SiteFooter linkColumns={FOOTER_LINK_COLUMNS} fourthColumn={{ type: "whatsapp-cta" }} />
       <WhatsAppFAB />
     </div>
   );

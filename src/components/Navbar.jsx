@@ -17,7 +17,7 @@ const DEFAULT_LINKS = [
   { label: "Agents", href: "/agents" },
 ];
 
-export default function Navbar({ links = DEFAULT_LINKS, onListPropertyClick }) {
+export default function Navbar({ links = DEFAULT_LINKS, onListPropertyClick, user }) {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
@@ -52,9 +52,22 @@ export default function Navbar({ links = DEFAULT_LINKS, onListPropertyClick }) {
             List Your Property
           </button>
 
-          <div className="flex items-center text-on-surface-variant">
-            <Icon name="person" />
-          </div>
+          {/* Shows the user's photo once they have one (e.g. on the search
+              results page export); falls back to the plain icon for
+              logged-out visitors or agents who haven't uploaded a photo yet. */}
+          {user?.avatarUrl ? (
+            <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-primary-container cursor-pointer">
+              <img
+                src={user.avatarUrl}
+                alt={user.name ? `${user.name}'s profile` : "User profile"}
+                className="w-full h-full object-cover"
+              />
+            </div>
+          ) : (
+            <div className="flex items-center text-on-surface-variant">
+              <Icon name="person" />
+            </div>
+          )}
 
           <button
             className="md:hidden flex items-center"

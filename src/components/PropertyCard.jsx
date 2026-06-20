@@ -13,6 +13,18 @@ import Icon from "./Icon";
  * than hardcoded "beds/baths" fields, because land and office listings
  * show different stats (sqm) than houses do (beds/baths) — see
  * src/data/properties.js for both shapes.
+ *
+ * `tag` replaces the old hardcoded "Verified Agent" badge. The search
+ * results export showed the same top-left badge slot used for THREE
+ * different things across cards: a verified-agent badge, a blue
+ * "Shortlet" label, or nothing at all. Rather than building separate
+ * components for each, `tag` is one optional object: { label, variant }
+ * where variant is "verified" | "info" | undefined. Land listings and
+ * basic flats just omit it.
+ *
+ * `agentAvatarUrl` is optional — the search results page shows a small
+ * circular agent photo bottom-right on some cards; the home page never
+ * had this, so it's additive and won't affect existing usages.
  */
 export default function PropertyCard({ property, onFavoriteToggle }) {
   const [isFavorited, setIsFavorited] = useState(property.isFavorited || false);
@@ -23,6 +35,11 @@ export default function PropertyCard({ property, onFavoriteToggle }) {
     onFavoriteToggle?.(property.id, !isFavorited);
     // TODO: connect to POST /api/favorites/:propertyId once auth + backend exist
   };
+
+  const tagStyles =
+    property.tag?.variant === "info"
+      ? "bg-primary text-white"
+      : "bg-secondary text-on-secondary"; // default: verified-agent gold styling
 
   return (
     <a
@@ -36,10 +53,14 @@ export default function PropertyCard({ property, onFavoriteToggle }) {
           alt={property.imageAlt}
         />
 
-        {property.verifiedAgent && (
-          <div className="absolute top-3 left-3 bg-secondary text-on-secondary px-3 py-1 rounded text-xs font-bold flex items-center gap-1 shadow-sm">
-            <Icon name="verified" className="text-sm" filled />
-            Verified Agent
+        {property.tag && (
+          <div
+            className={`absolute top-3 left-3 px-3 py-1 rounded text-xs font-bold flex items-center gap-1 shadow-sm ${tagStyles}`}
+          >
+            {property.tag.variant !== "info" && (
+              <Icon name="verified" className="text-sm" filled />
+            )}
+            {property.tag.label}
           </div>
         )}
 
@@ -52,6 +73,16 @@ export default function PropertyCard({ property, onFavoriteToggle }) {
         >
           <Icon name="favorite" filled={isFavorited} />
         </button>
+
+        {property.agentAvatarUrl && (
+          <div className="absolute bottom-3 right-3">
+            <img
+              src={property.agentAvatarUrl}
+              alt="Listing agent"
+              className="w-10 h-10 rounded-full border-2 border-white shadow-md"
+            />
+          </div>
+        )}
       </div>
 
       <div className="p-6">
