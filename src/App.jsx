@@ -11,6 +11,9 @@ import FAQPage from "./pages/FAQPage";
 import HelpCenterPage from "./pages/HelpCenterPage";
 import CareersPage from "./pages/CareersPage";
 import SignupPage from "./pages/SignupPage";
+import VerifyPhonePage from "./pages/VerifyPhonePage";
+import LoginPage from "./pages/LoginPage";
+import ForgotPasswordPlaceholderPage from "./pages/ForgotPasswordPlaceholderPage";
 import AgentVerificationPlaceholderPage from "./pages/AgentVerificationPlaceholderPage";
 
 /**
@@ -29,9 +32,6 @@ import AgentVerificationPlaceholderPage from "./pages/AgentVerificationPlacehold
  * ones), not by declaration order like v5 did, so /agents/verify
  * always wins against that exact path regardless of where it's listed.
  * Kept it above /agents/:id anyway for readability, not correctness.
- * /login isn't routed yet since no LoginPage exists — SignupPage's
- * "Already have an account?" link points there ahead of that page
- * being built, which is fine; it'll 404 until that screen arrives.
  */
 export default function App() {
   return (
@@ -45,6 +45,9 @@ export default function App() {
       <Route path="/agents/verify" element={<AgentVerificationPlaceholderPage />} />
       <Route path="/agents/:id" element={<AgentProfilePage />} />
       <Route path="/signup" element={<SignupPage />} />
+      <Route path="/verify-phone" element={<VerifyPhonePage />} />
+      <Route path="/login" element={<LoginPage />} />
+      <Route path="/forgot-password" element={<ForgotPasswordPlaceholderPage />} />
       <Route path="/about" element={<AboutPage />} />
       <Route path="/privacy" element={<PrivacyPage />} />
       <Route path="/terms" element={<TermsPage />} />

@@ -5,6 +5,7 @@ import AuthFooter from "../components/AuthFooter";
 import RoleSelector from "../components/RoleSelector";
 import GoogleSignInButton from "../components/GoogleSignInButton";
 import FacebookSignInButton from "../components/FacebookSignInButton";
+import LoadingButton from "../components/LoadingButton";
 
 /**
  * Form fields are controlled (real React state) so they're ready for
@@ -12,16 +13,23 @@ import FacebookSignInButton from "../components/FacebookSignInButton";
  * person's explicit decision, no validation logic is added yet —
  * the form just needs to look and feel right for now.
  *
- * Role determines where submission goes: agents need verification
- * before they can list (per the original platform rules), so they
- * route to /agents/verify; buyers go straight to the home page as a
- * signed-up user would. Neither destination actually creates an
- * account yet — that's backend work — this is just correct routing
- * intent, clearly marked with TODOs.
+ * Role determines where submission goes — but now via an intermediate
+ * stop: /verify-phone first, carrying { role, phone } in router state
+ * so that page knows where to send the person next (agent verification
+ * vs. home) without needing a backend session to read from yet. Agents
+ * still ultimately land on /agents/verify; buyers still land on /.
+ * Neither destination actually creates an account yet — that's backend
+ * work — this is just correct routing intent, clearly marked with TODOs.
+ *
+ * The loading-state submit button (LoadingButton + a fake setTimeout
+ * delay) was retrofitted from LoginPage's same pattern, added when the
+ * login screen introduced it — kept both forms consistent rather than
+ * leaving signup as the one form without this treatment.
  */
 export default function SignupPage() {
   const navigate = useNavigate();
   const [role, setRole] = useState("buyer");
+  const [loading, setLoading] = useState(false);
   const [form, setForm] = useState({
     fullName: "",
     phone: "",
@@ -38,11 +46,17 @@ export default function SignupPage() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setLoading(true);
     console.log("Signup submitted:", { role, ...form });
     // TODO: POST to /api/auth/signup once backend exists. That endpoint
     // should hash the password, create the user record with the chosen
-    // role, and return a session/token — none of that exists yet.
-    navigate(role === "agent" ? "/agents/verify" : "/");
+    // role, send a real OTP to the phone number, and return a session/
+    // token — none of that exists yet. The setTimeout below stands in
+    // for that real network request.
+    setTimeout(() => {
+      setLoading(false);
+      navigate("/verify-phone", { state: { role, phone: form.phone } });
+    }, 1500);
   };
 
   const handleGoogleCredential = (credential) => {
@@ -167,12 +181,14 @@ export default function SignupPage() {
               </label>
             </div>
 
-            <button
+            <LoadingButton
               type="submit"
-              className="w-full py-4 bg-primary text-white rounded-full font-headline-sm text-headline-sm hover:opacity-90 active:scale-[0.98] transition-all duration-200 shadow-lg"
+              loading={loading}
+              loadingLabel="Creating account..."
+              className="w-full py-4 bg-primary text-white rounded-full font-headline-sm text-headline-sm hover:opacity-90 active:scale-[0.98] transition-all duration-200 shadow-lg disabled:opacity-80"
             >
               Create Account
-            </button>
+            </LoadingButton>
           </form>
 
           <div className="relative my-stack-lg">
