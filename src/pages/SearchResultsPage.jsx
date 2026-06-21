@@ -29,11 +29,6 @@ const FOOTER_LINK_COLUMNS = [
 export default function SearchResultsPage() {
   const [currentPage, setCurrentPage] = useState(1);
 
-  const handleListPropertyClick = () => {
-    console.log("List Your Property clicked");
-    // TODO: route to agent signup/verification flow once auth exists
-  };
-
   const handleApplyFilters = (filters) => {
     console.log("Filters applied:", filters);
     // TODO: refetch GET /api/listings with these filters once backend exists
@@ -41,7 +36,7 @@ export default function SearchResultsPage() {
 
   return (
     <div className="bg-background text-on-surface font-body-md">
-      <Navbar onListPropertyClick={handleListPropertyClick} user={DEMO_USER} />
+      <Navbar user={DEMO_USER} />
 
       <main className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-stack-lg">
         <div className="flex flex-col md:flex-row gap-gutter">

@@ -36,10 +36,6 @@ const FOOTER_LINK_COLUMNS = [
  * none of the child components need to change for that swap.
  */
 export default function PropertyDetailPage({ listing = DEMO_LISTING_DETAIL }) {
-  const handleListPropertyClick = () => {
-    console.log("List Your Property clicked");
-    // TODO: route to agent signup/verification flow once auth exists
-  };
 
   const handleMessageAgent = () => {
     console.log("Message Agent clicked for listing:", listing.id);
@@ -53,7 +49,7 @@ export default function PropertyDetailPage({ listing = DEMO_LISTING_DETAIL }) {
 
   return (
     <div className="bg-surface text-on-surface font-body-md">
-      <Navbar onListPropertyClick={handleListPropertyClick} user={DEMO_USER} />
+      <Navbar user={DEMO_USER} />
 
       <main className="pt-8 max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop pb-stack-lg">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">

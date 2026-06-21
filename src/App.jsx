@@ -10,6 +10,8 @@ import ContactPage from "./pages/ContactPage";
 import FAQPage from "./pages/FAQPage";
 import HelpCenterPage from "./pages/HelpCenterPage";
 import CareersPage from "./pages/CareersPage";
+import SignupPage from "./pages/SignupPage";
+import AgentVerificationPlaceholderPage from "./pages/AgentVerificationPlaceholderPage";
 
 /**
  * Real routing, replacing the temporary dev-only page switcher.
@@ -21,6 +23,15 @@ import CareersPage from "./pages/CareersPage";
  * The static content pages (About/Privacy/Terms/etc.) are placeholders
  * per the person's request — real copy will replace the filler text
  * inside each page file, but the routes and navigation are real now.
+ *
+ * /agents/verify and /agents/:id can be declared in any order — React
+ * Router v6 ranks routes by specificity (static segments beat dynamic
+ * ones), not by declaration order like v5 did, so /agents/verify
+ * always wins against that exact path regardless of where it's listed.
+ * Kept it above /agents/:id anyway for readability, not correctness.
+ * /login isn't routed yet since no LoginPage exists — SignupPage's
+ * "Already have an account?" link points there ahead of that page
+ * being built, which is fine; it'll 404 until that screen arrives.
  */
 export default function App() {
   return (
@@ -31,7 +42,9 @@ export default function App() {
       <Route path="/shortlet" element={<SearchResultsPage />} />
       <Route path="/land" element={<SearchResultsPage />} />
       <Route path="/listing/:id" element={<PropertyDetailPage />} />
+      <Route path="/agents/verify" element={<AgentVerificationPlaceholderPage />} />
       <Route path="/agents/:id" element={<AgentProfilePage />} />
+      <Route path="/signup" element={<SignupPage />} />
       <Route path="/about" element={<AboutPage />} />
       <Route path="/privacy" element={<PrivacyPage />} />
       <Route path="/terms" element={<TermsPage />} />

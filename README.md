@@ -64,6 +64,23 @@ src/
 - Favorite (heart) button toggles visually but doesn't persist anywhere
 - WhatsApp number is a placeholder — replace `2340000000000` in
   `src/data/siteConfig.js` with the real number
+- Signup form collects input but doesn't create a real account yet
+  (no backend to send it to)
+- Facebook sign-in is a disabled placeholder; no OAuth setup decided yet
+
+## Environment setup (Google Sign-In)
+
+The signup page's Google button is real (uses Google's actual OAuth
+SDK), but needs a Client ID only you can generate:
+
+1. Copy `.env.example` to a new file named `.env`
+2. Follow the instructions inside `.env.example` to get a Client ID
+   from Google Cloud Console
+3. Paste it in as `VITE_GOOGLE_CLIENT_ID=your-id-here`
+4. Restart `npm run dev` (Vite only reads `.env` on startup)
+
+Until this is set, the button shows as a labeled, disabled placeholder
+instead of crashing or pretending to work.
 
 ## Next steps
 

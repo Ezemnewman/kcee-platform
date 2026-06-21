@@ -38,11 +38,6 @@ export default function AgentProfilePage({ agent = AGENT_PROFILE, listings = AGE
     return filtered;
   }, [listings, activeTab, sortOrder]);
 
-  const handleListPropertyClick = () => {
-    console.log("List Your Property clicked");
-    // TODO: route to agent signup/verification flow once auth exists
-  };
-
   const handleMessageAgent = () => {
     console.log("Message Agent clicked for agent:", agent.id);
     // TODO: open messaging thread once the messaging system exists
@@ -50,7 +45,7 @@ export default function AgentProfilePage({ agent = AGENT_PROFILE, listings = AGE
 
   return (
     <div className="bg-background font-body-md text-on-surface">
-      <Navbar onListPropertyClick={handleListPropertyClick} user={DEMO_USER} />
+      <Navbar user={DEMO_USER} />
 
       <main className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-stack-lg">
         <AgentProfileHeader agent={agent} onMessageAgent={handleMessageAgent} />

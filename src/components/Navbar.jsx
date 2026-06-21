@@ -23,7 +23,7 @@ const DEFAULT_LINKS = [
   { label: "Agents", to: "/agents/tunde-bakare" },
 ];
 
-export default function Navbar({ links = DEFAULT_LINKS, onListPropertyClick, user }) {
+export default function Navbar({ links = DEFAULT_LINKS, user }) {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const linkClasses = ({ isActive }) =>
@@ -49,12 +49,12 @@ export default function Navbar({ links = DEFAULT_LINKS, onListPropertyClick, use
         </ul>
 
         <div className="flex items-center gap-4">
-          <button
-            onClick={onListPropertyClick}
+          <Link
+            to="/signup"
             className="hidden md:block bg-primary text-on-primary font-label-md text-label-md px-6 py-2.5 rounded-full hover:opacity-90 active:scale-95 transition-all"
           >
             List Your Property
-          </button>
+          </Link>
 
           {/* Shows the user's photo once they have one (e.g. on the search
               results page export); falls back to the plain icon for
@@ -99,12 +99,13 @@ export default function Navbar({ links = DEFAULT_LINKS, onListPropertyClick, use
             </li>
           ))}
           <li>
-            <button
-              onClick={onListPropertyClick}
-              className="w-full bg-primary text-on-primary px-6 py-2.5 rounded-full mt-stack-sm"
+            <Link
+              to="/signup"
+              onClick={() => setMobileOpen(false)}
+              className="block w-full text-center bg-primary text-on-primary px-6 py-2.5 rounded-full mt-stack-sm"
             >
               List Your Property
-            </button>
+            </Link>
           </li>
         </ul>
       )}

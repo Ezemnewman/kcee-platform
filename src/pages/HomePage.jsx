@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import SiteFooter from "../components/SiteFooter";
 import WhatsAppFAB from "../components/WhatsAppFAB";
@@ -38,14 +39,9 @@ export default function HomePage() {
     // once the search results page and backend API exist
   };
 
-  const handleListPropertyClick = () => {
-    // TODO: route to agent signup/verification flow once auth exists
-    console.log("List Your Property clicked");
-  };
-
   return (
     <div className="bg-background text-on-surface font-body-md overflow-x-hidden">
-      <Navbar onListPropertyClick={handleListPropertyClick} />
+      <Navbar />
 
       <main>
         {/* Hero */}
@@ -119,12 +115,12 @@ export default function HomePage() {
                 Join over 10,000+ verified agents listing on LagosHomes.
               </p>
             </div>
-            <button
-              onClick={handleListPropertyClick}
+            <Link
+              to="/signup"
               className="bg-secondary text-on-secondary px-8 py-3 rounded-full font-label-md hover:opacity-90 active:scale-95 transition-all shadow-md"
             >
               Get Started Today
-            </button>
+            </Link>
           </div>
         </section>
       </main>
