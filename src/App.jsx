@@ -13,7 +13,8 @@ import CareersPage from "./pages/CareersPage";
 import SignupPage from "./pages/SignupPage";
 import VerifyPhonePage from "./pages/VerifyPhonePage";
 import LoginPage from "./pages/LoginPage";
-import ForgotPasswordPlaceholderPage from "./pages/ForgotPasswordPlaceholderPage";
+import ForgotPasswordPage from "./pages/ForgotPasswordPage";
+import ResetPasswordPage from "./pages/ResetPasswordPage";
 import AgentVerificationPlaceholderPage from "./pages/AgentVerificationPlaceholderPage";
 
 /**
@@ -47,7 +48,8 @@ export default function App() {
       <Route path="/signup" element={<SignupPage />} />
       <Route path="/verify-phone" element={<VerifyPhonePage />} />
       <Route path="/login" element={<LoginPage />} />
-      <Route path="/forgot-password" element={<ForgotPasswordPlaceholderPage />} />
+      <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+      <Route path="/reset-password" element={<ResetPasswordPage />} />
       <Route path="/about" element={<AboutPage />} />
       <Route path="/privacy" element={<PrivacyPage />} />
       <Route path="/terms" element={<TermsPage />} />
