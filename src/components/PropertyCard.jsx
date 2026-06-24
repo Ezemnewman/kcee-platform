@@ -1,6 +1,6 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import Icon from "./Icon";
+import { useFavorites } from "../context/FavoritesContext";
 
 /**
  * The single most important reuse win in this whole conversion.
@@ -34,15 +34,22 @@ import Icon from "./Icon";
  * kind of listing is this" and "is this agent verified" are different
  * facts that happen to both render as small badges, not variants of
  * the same concept.
+ *
+ * Favorite state now comes from FavoritesContext instead of local
+ * useState — favoriting a property here is what makes it show up on
+ * the buyer dashboard's Favorites page, and unfavoriting it there
+ * removes the highlighted heart here too, since both read the same
+ * shared source of truth. The old `onFavoriteToggle` callback prop is
+ * gone; the context already notifies every consumer automatically.
  */
-export default function PropertyCard({ property, onFavoriteToggle }) {
-  const [isFavorited, setIsFavorited] = useState(property.isFavorited || false);
+export default function PropertyCard({ property }) {
+  const { isFavorited, toggleFavorite } = useFavorites();
+  const favorited = isFavorited(property.id);
 
   const handleFavoriteClick = (e) => {
     e.preventDefault();
-    setIsFavorited((prev) => !prev);
-    onFavoriteToggle?.(property.id, !isFavorited);
-    // TODO: connect to POST /api/favorites/:propertyId once auth + backend exist
+    toggleFavorite(property);
+    // TODO: sync to POST/DELETE /api/favorites/:propertyId once backend exists
   };
 
   const tagStyles =
@@ -83,12 +90,12 @@ export default function PropertyCard({ property, onFavoriteToggle }) {
 
         <button
           onClick={handleFavoriteClick}
-          aria-label={isFavorited ? "Remove from favorites" : "Add to favorites"}
+          aria-label={favorited ? "Remove from favorites" : "Add to favorites"}
           className={`absolute top-3 right-3 w-10 h-10 bg-surface/80 backdrop-blur-sm rounded-full flex items-center justify-center transition-all hover:bg-surface ${
-            isFavorited ? "text-error" : "text-on-surface-variant hover:text-error"
+            favorited ? "text-error" : "text-on-surface-variant hover:text-error"
           }`}
         >
-          <Icon name="favorite" filled={isFavorited} />
+          <Icon name="favorite" filled={favorited} />
         </button>
 
         {property.agentAvatarUrl && (

@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import SiteFooter from "../components/SiteFooter";
 import PropertyGallery from "../components/PropertyGallery";
@@ -36,6 +37,7 @@ const FOOTER_LINK_COLUMNS = [
  * none of the child components need to change for that swap.
  */
 export default function PropertyDetailPage({ listing = DEMO_LISTING_DETAIL }) {
+  const navigate = useNavigate();
 
   const handleMessageAgent = () => {
     console.log("Message Agent clicked for listing:", listing.id);
@@ -43,8 +45,7 @@ export default function PropertyDetailPage({ listing = DEMO_LISTING_DETAIL }) {
   };
 
   const handleReportListing = () => {
-    console.log("Report Listing clicked for listing:", listing.id);
-    // TODO: open a report modal / connect to POST /api/listings/:id/report
+    navigate(`/listing/${listing.id}/report`);
   };
 
   return (

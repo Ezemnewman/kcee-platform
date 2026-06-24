@@ -16,6 +16,10 @@ import LoginPage from "./pages/LoginPage";
 import ForgotPasswordPage from "./pages/ForgotPasswordPage";
 import ResetPasswordPage from "./pages/ResetPasswordPage";
 import AgentVerificationPlaceholderPage from "./pages/AgentVerificationPlaceholderPage";
+import ReportListingPage from "./pages/ReportListingPage";
+import DashboardLayout from "./components/DashboardLayout";
+import DashboardOverviewPage from "./pages/DashboardOverviewPage";
+import FavoritesPage from "./pages/FavoritesPage";
 
 /**
  * Real routing, replacing the temporary dev-only page switcher.
@@ -43,8 +47,15 @@ export default function App() {
       <Route path="/shortlet" element={<SearchResultsPage />} />
       <Route path="/land" element={<SearchResultsPage />} />
       <Route path="/listing/:id" element={<PropertyDetailPage />} />
+      <Route path="/listing/:id/report" element={<ReportListingPage />} />
       <Route path="/agents/verify" element={<AgentVerificationPlaceholderPage />} />
       <Route path="/agents/:id" element={<AgentProfilePage />} />
+      <Route path="/dashboard" element={<DashboardLayout />}>
+        <Route index element={<DashboardOverviewPage />} />
+        <Route path="favorites" element={<FavoritesPage />} />
+        {/* alerts, messages, settings routes will slot in here once those
+            screens exist — DashboardSidebar already links to all five */}
+      </Route>
       <Route path="/signup" element={<SignupPage />} />
       <Route path="/verify-phone" element={<VerifyPhonePage />} />
       <Route path="/login" element={<LoginPage />} />

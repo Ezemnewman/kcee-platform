@@ -505,3 +505,118 @@ export const AGENT_LISTINGS = [
     details: [{ icon: "square_foot", label: "650 sqm" }],
   },
 ];
+
+/**
+ * Demo data for the Buyer Dashboard. DASHBOARD_USER is separate from
+ * DEMO_USER (the generic logged-in-navbar avatar) since the dashboard
+ * shows richer profile info (membership tier) the main navbar doesn't
+ * need.
+ */
+export const DASHBOARD_USER = {
+  name: "Chidi Okoro",
+  tier: "Premium Member",
+  avatarUrl:
+    "https://lh3.googleusercontent.com/aida-public/AB6AXuAbpEDgixysQIXRdzHwxP1EEehLfywPCAKlLVN7KzOSRsFR5JZpS2WjfeqtJXfJMGyxZkkA_kEL0EN6nJvVAGYLFWb1CQUJxl8fegtCU-R-M5cytumiHag9GtRAgMznarJtkEbIDOlGhwWKxeCB74CDyn16EQMa47WCDYmgd3T0rqG_LNmsbPOHarAJ56IBgE_vNuuqhC3-tGG61nkzfJLevM1DwLxbP2kuAZvlw2lAelndGE7JXH_CHNMToknx0mQsZQZqpxK3oO3S",
+};
+
+export const DASHBOARD_SUMMARY_STATS = [
+  { label: "Saved Properties", value: 12, icon: "bookmark" },
+  { label: "Active Alerts", value: 4, icon: "campaign" },
+  { label: "Unread Messages", value: 2, icon: "forum", hasIndicator: true },
+];
+
+export const RECENTLY_VIEWED_PROPERTIES = [
+  {
+    id: "rv1",
+    title: "Modern 3-Bedroom Apartment",
+    location: "Victoria Island, Lagos",
+    formattedPrice: "₦4,500,000/year",
+    typeBadge: "For Rent",
+    imageUrl:
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuCEGQG6k_MfjeFssuvAChgmxSvf1SOIfFBXfuDCG_rBFlJIPMZ2n0_wZPTfWvL3MqMH70h34HWOTswyHT_G-5SRdBoARcr-uwuExWMoSaq-D8mPwLYJjpa5YmZw3S_HK6kfRNDiDueHIf2dqn-uQb5OScK6V3QoPmaStlMlMORuevjeMUC6BpVWpeD795A4FEA2nDfdpPHhTj5yf-TszmPlMAMw-cWNwZ8eWMNOzBN6H7WWij5sggrzkXZixgw_uXyi1im-ArhUvosh",
+    imageAlt: "Modern apartment in Victoria Island, Lagos",
+    details: [
+      { icon: "bed", label: "3" },
+      { icon: "bathtub", label: "2" },
+    ],
+  },
+  {
+    id: "rv2",
+    title: "Luxury 4-Bedroom Duplex",
+    location: "Phase 1, Lekki",
+    formattedPrice: "₦85,000,000",
+    tag: { label: "Featured", variant: "info" },
+    imageUrl:
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuAbltLn_7CuXikXf7FpQG6boL-k9lvbjiNzmIanGeFQ08mo9lqscE34lHJqjTlyvvZzd1ek4FzBgfsHCXHOaViqzp5pZUBfFeM56LBNKjUblC02LxIPnqgszs_dcDiqW9ykVlnBI-xwWyUJesoQpWFtjDVzeCh3x-C321NBCjXPEiATEFP4mQigBVGSPNNSHuFWiZdpMX7PFnjfJpeD84tblG25nxUps6tD-xerGcq4XXuZsv4vJE3yrzg72vUtspRAuChSKlSofuI0",
+    imageAlt: "Luxury duplex in Lekki, Lagos",
+    details: [
+      { icon: "bed", label: "4" },
+      { icon: "bathtub", label: "4" },
+    ],
+  },
+  {
+    id: "rv3",
+    title: "Renovated 2-Bedroom Terrace",
+    location: "Maitama, Abuja",
+    formattedPrice: "₦45,000,000",
+    typeBadge: "For Sale",
+    imageUrl:
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuBNb4flj61aF4QlZYr_liHXiwoX50jTRsR2CqtNLizZ6OqzjY0dUips22jGp7b7kxnn-4UpoAqZgygyKI3invMZ4LGkGSALBxifpFMylliJJGxOkN5BuUf2MT3PM91nalzfMlJaoxqhh2h-_sbB9GBk8D0wVkh3mC4uNjAPVdZ20z1sAkSZbfDH3H_55TTJkjQI5YqBs81baTO5GR7OodSwqUMS4SnWOecF208f8WjEJIRno__t7eZXZUrRVOUSnMaQ0Nm6ZtwyZcVA",
+    imageAlt: "Renovated terrace home in Maitama, Abuja",
+    details: [
+      { icon: "bed", label: "2" },
+      { icon: "bathtub", label: "2" },
+    ],
+  },
+];
+
+/**
+ * Seed data for the Favorites dashboard page. These are passed to
+ * FavoritesContext on first load (see FavoritesPage) purely so the
+ * page isn't empty for demo purposes — a real backend would instead
+ * hydrate the context from GET /api/favorites on login.
+ */
+export const SEED_FAVORITE_PROPERTIES = [
+  {
+    id: "fav1",
+    title: "Eko Atlantic Smart Penthouse",
+    location: "Victoria Island, Lagos",
+    formattedPrice: "₦450,000,000",
+    typeBadge: "For Sale",
+    imageUrl:
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuDVsjMacdJWc1NOpGrRGRVscQpJ8BhKpq-2EEkXClJUmkeOOnWWDgFPr7cgNY60Dd4CnbpQPgIryzd5wCZ0JAX74mKOU-l25HG1m4htOS1wYHU0YTEXvnVimOX5j7RZfHSfkka1DdzpR4l0eaJcMvwj-AqdWAH33GVJMuLZrqeCQSwtoEGkKIvoY5DJ6El1l1DXMhnVAxG38WR3A05ROUjDA4YkCIlSdmqja7BYOX6266AE7DU3nia4zys-btYEbjyrRBEf18JI0G--",
+    imageAlt: "Smart penthouse in Eko Atlantic, Lagos",
+    details: [
+      { icon: "bed", label: "4" },
+      { icon: "bathtub", label: "5" },
+    ],
+  },
+  {
+    id: "fav2",
+    title: "Diplomatic Quarter Residence",
+    location: "Maitama, Abuja",
+    formattedPrice: "₦720,000,000",
+    typeBadge: "Premium",
+    imageUrl:
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuAl2anHZYLPeCrHv0OEWchXbrCGMrjFsAVZOtI63bgZGtZU7cesJu8OOJ4aUCUviT4tyUzKa2uMoz4dJyb1rl_gRAgJUjCXtsUj40XXeS_XZD0M_egTNUtrT8ZnQTXDVPPooXAGvLXElDVPf2yp8XrPUvPvUbl_TU_bZ7hTsbwGX5ATrSCCm2KfzCDSyU-eLlRtLjInwTUebTXlyNasH7iLStHbXfYyH9CFRoMc59xISmeBFZBC93zAAapcJx_nWlNj3aYkLka-Va9q",
+    imageAlt: "Diplomatic Quarter residence in Maitama, Abuja",
+    details: [
+      { icon: "bed", label: "6" },
+      { icon: "bathtub", label: "7" },
+    ],
+  },
+  {
+    id: "fav3",
+    title: "Modern Lekki Waterfront",
+    location: "Lekki Phase 1, Lagos",
+    formattedPrice: "₦125,000,000",
+    typeBadge: "Newly Built",
+    imageUrl:
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuDiQm2qL7tdh-zPT4bALW180t6wHGsOmtHO8_xqY2ExR35KPTe1HZ1BHl0LJRXy1t9mkSd1sEMikZ71E99_KhoXBrUPI2BvY7ie1jEsG9tFTIcXswhPa-TqYfMxFAaA00ZSWwJx9Tr_y77YWtvvSxw8z-API7SedyvWNZekgJ19eeWeQAbjGuVgj8EZhWWcoWqV57rNf_Z8P77T__IhvS5LymZD8Mf7HkLhL0rrGeRCW0NhqKywX3jyXHRwkYtNJmXqaFJfqGSOjPh8",
+    imageAlt: "Modern waterfront property in Lekki Phase 1, Lagos",
+    details: [
+      { icon: "bed", label: "3" },
+      { icon: "bathtub", label: "3" },
+    ],
+  },
+];
