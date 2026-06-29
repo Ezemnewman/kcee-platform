@@ -67,7 +67,7 @@ export default function VerifyPhonePage() {
     // in for that real network request.
     setTimeout(() => {
       setVerifying(false);
-      navigate(role === "agent" ? "/agents/verify" : "/");
+      navigate(role === "agent" ? "/agents/apply" : "/");
     }, 1200);
   };
 

@@ -17,7 +17,8 @@ import LoadingButton from "../components/LoadingButton";
  * stop: /verify-phone first, carrying { role, phone } in router state
  * so that page knows where to send the person next (agent verification
  * vs. home) without needing a backend session to read from yet. Agents
- * still ultimately land on /agents/verify; buyers still land on /.
+ * still ultimately land on /agents/apply (the 3-step application
+ * wizard); buyers still land on /.
  * Neither destination actually creates an account yet — that's backend
  * work — this is just correct routing intent, clearly marked with TODOs.
  *

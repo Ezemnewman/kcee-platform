@@ -620,3 +620,238 @@ export const SEED_FAVORITE_PROPERTIES = [
     ],
   },
 ];
+
+/**
+ * Demo data for the Saved Alerts dashboard page. Each alert tracks its
+ * own emailEnabled toggle (real per-item state, not just decoration —
+ * see AlertsPage) and deletion removes it from this list entirely.
+ */
+export const SEED_SAVED_ALERTS = [
+  {
+    id: "alert1",
+    title: "2-bedroom flats in Lekki under ₦2M/year",
+    criteria: [
+      { icon: "location_on", label: "Lekki, Lagos" },
+      { icon: "payments", label: "₦2,000,000 max" },
+    ],
+    frequency: "Daily",
+    emailEnabled: true,
+  },
+  {
+    id: "alert2",
+    title: "Land for sale in Ibeju-Lekki",
+    criteria: [
+      { icon: "location_on", label: "Ibeju-Lekki" },
+      { icon: "terrain", label: "Residential Plot" },
+    ],
+    frequency: "Real-time",
+    emailEnabled: true,
+  },
+  {
+    id: "alert3",
+    title: "4-bedroom duplex in Abuja Phase 1",
+    criteria: [
+      { icon: "location_on", label: "Abuja" },
+      { icon: "home", label: "Fully Detached" },
+    ],
+    frequency: "Weekly",
+    emailEnabled: false,
+  },
+];
+
+export const ALERT_RECOMMENDATIONS = [
+  {
+    id: "rec1",
+    badge: "NEW MATCH",
+    formattedPrice: "₦1,850,000/year",
+    title: "Luxury 2BR Flat • Lekki Phase 1",
+    description: "Close to Admiralty Way, modern amenities included.",
+    imageUrl:
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuA4RJD7Pu-qa740uHeKUC_rreVyLrLcCkq9sm_XxBemToN9Ok40_FoF78L2WZgERfEXocs6XOttZTucegRY35I1P65-IUTDM12oQJ9PyMZ4iuUncwsoDuFPBc0bx93tmemFm5LoISH8dCWs_-vMNkOq-G4oBbSF-PcZ7n18ccX_WTjHmXgi9gsQZHgYSSCkCkD1aT48ZW_ApvloerRLK3VMRVxOX7v6MWcfp3Ak8GumMi8fnr1RkVgO9w2MSvyIqnp76XoFnYnV2S5U",
+    imageAlt: "Luxury 2-bedroom flat in Lekki Phase 1",
+    details: [
+      { icon: "bed", label: "2" },
+      { icon: "bathtub", label: "2" },
+    ],
+  },
+  {
+    id: "rec2",
+    badge: "TRENDING",
+    formattedPrice: "₦12,500,000",
+    title: "600sqm Residential Plot • Ibeju-Lekki",
+    description: "C of O ready. Close to the Free Trade Zone.",
+    imageUrl:
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuDqHp20Y3zlh8RvBFt43yXhToivWSsFwnspov_iyW-7j5ku1T4rOwkSbmuhvg0cUSLdHm7QyHyTEuudnw6Kgar-nQTI-fIvxbs1jBUv_2_OIiD6xTLN4TejQDvmiD_N-Fg8ch3teOgHSmgZPQNTuLO-CEJhO_gGxw2eVyjnOlLfD-NaWmzYTWT2zqzlHEEiA25Wx8F9pv4dI98AfCOnNhA4DeQ1-sK8BDLWSy3jGhiSVbQoM4fkMmMnq90rbp9Pz8UP64rQEAqDl8RJ",
+    imageAlt: "Residential land plot in Ibeju-Lekki",
+    details: [{ icon: "terrain", label: "600sqm" }],
+  },
+];
+
+/**
+ * Demo data for the Messages dashboard page. Each conversation has its
+ * own message thread; MessagesPage holds which conversation is
+ * "active" as real state (not the Stitch export's static single-thread
+ * markup), so clicking a different conversation in the list actually
+ * swaps which thread renders on the right.
+ */
+export const SEED_CONVERSATIONS = [
+  {
+    id: "conv1",
+    contactName: "Chioma Obi",
+    contactAvatarUrl:
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuC6MB4y9Qssy6IFtyl4qZKgtg_lq2TrY-32RK6p_pgY10FZwfxo6CeUDmj4o9BXYspOpFKvPkhYd-PfUiAPoRQdo4Khqz4zWB9NmqEPSTaKzx04YGb95r6akQ9bzQt2bu8ghvzwFpZv0fUqMzm0QRx7uNcCrr5iQkFYfXOVamLpaeL8hn66K6Xu5u_pOrMIs7S7G_HkzFxUKtJ2iQ-xHZAFMxUR169TuulrXYIYsGDrjzpz8nB1DcTUNO6OuITTrQ5Md22qdykYuck4",
+    online: true,
+    lastMessagePreview: "The viewing is confirmed for Saturday.",
+    lastMessageTime: "2m ago",
+    unreadCount: 2,
+    pinnedListing: {
+      title: "Luxury 4 Bedroom Duplex",
+      formattedPrice: "₦85,000,000",
+      imageUrl:
+        "https://lh3.googleusercontent.com/aida/AP1WRLsXzfUXlxnQ35AZ53cX-u7ytkmAxWgGnwCZEm701kapih8-GDIZ9d9NXSaB_Ujf1YRLzbqOX2ZOioP7RUPI6hk4l9kNp9xE4t1CfpinBkf5gFqYevKo8CXSLp6nFN7ES3s7WY3zqBcPz3T2brtte0fMFs-IPpZjj061Y7kNowNt0VF3zQgxOzGTSb5pwSDAAzXLRS6jONpIFTJlAhJMChJkxc2WnbuQr5tu65Ov9TbIGdfUYNE_ezm_S85a",
+    },
+    messages: [
+      {
+        id: "m1",
+        sender: "them",
+        text: "Hello Tunde! I just checked the schedule for the property in Lekki Phase 1. Are you still interested in a Saturday morning viewing?",
+        time: "10:42 AM",
+      },
+      {
+        id: "m2",
+        sender: "me",
+        text: "Hi Chioma! Yes, Saturday morning works perfectly for me. Around 10:00 AM?",
+        time: "10:45 AM",
+        read: true,
+      },
+      {
+        id: "m3",
+        sender: "them",
+        text: "That works perfectly. I've blocked off the slot for you. I'll send the location pin on Friday evening.",
+        time: "10:46 AM",
+      },
+      {
+        id: "m4",
+        sender: "them",
+        text: "The viewing is confirmed for Saturday. Looking forward to showing you the interior! It's even more impressive than the photos.",
+        time: "Just now",
+      },
+    ],
+  },
+  {
+    id: "conv2",
+    contactName: "Mr. Segun Williams",
+    contactAvatarUrl:
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuAruZaK_2Wqo7j0jYeSCQmKkz6OSeEWLFgIrKe72nU0xM7W5nXgJaPMi7FiKgXaGaPIfW6fVarA1W9TgUvJsB0OdXrucdoQMpViYDY3WyjX_yKNg3Iwg3M1AYpWkXjDg3LKlQp78HRBC8aodVAjD7ExyZknljIUdCvhA-AyZm7SBlWIdu9Mgda62Hu4ns1RFMV5aNa2F-NywiqycH1eRVj9ckm8bCrcRR0SK3-sB5nRvodFqs2-jD6anSPuOxrpTCu0gTJ3KMhjqgWA",
+    online: false,
+    lastMessagePreview: "Thank you for the documents, I'll review them shortly.",
+    lastMessageTime: "1h ago",
+    unreadCount: 0,
+    messages: [
+      {
+        id: "m1",
+        sender: "them",
+        text: "Thank you for the documents, I'll review them shortly.",
+        time: "9:30 AM",
+      },
+    ],
+  },
+  {
+    id: "conv3",
+    contactName: "Amaka Property Group",
+    contactAvatarUrl:
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuAhOS3nyWgLqbvNNvVG9NHZvcKY9jCZ3rRjA-N5pTQRdphbu4oW_BTSr5xFiIHefSbX00EAnucLhvvbOLIpRjWLj7vl03kS8aD5V4SxNnWIITr-icAA3RhQyzM9Kz8P5CoSmCuZSpnxFAPayj3C1I3EzRI4nfopNb2upBy70g-6N_jLP-ihy7hgT6ZUbzzFGd9X_MyBHWYuP7G3QPYVSuL7Uv_-_FKX0avYrhthxsfHVQPOoRXJsb-EgqObFEXipQJ5qGO7nHtrj4zw",
+    online: false,
+    lastMessagePreview: "Is the 3-bedroom apartment still available in Lekki?",
+    lastMessageTime: "Yesterday",
+    unreadCount: 0,
+    messages: [
+      {
+        id: "m1",
+        sender: "them",
+        text: "Is the 3-bedroom apartment still available in Lekki?",
+        time: "Yesterday, 4:15 PM",
+      },
+    ],
+  },
+  {
+    id: "conv4",
+    contactName: "Femi Bankole",
+    contactInitials: "FB",
+    online: false,
+    lastMessagePreview: "I have sent the deposit slip to your email.",
+    lastMessageTime: "Oct 12",
+    unreadCount: 0,
+    messages: [
+      {
+        id: "m1",
+        sender: "them",
+        text: "I have sent the deposit slip to your email.",
+        time: "Oct 12, 2:00 PM",
+      },
+    ],
+  },
+];
+
+/**
+ * Demo data for the Agent Dashboard. AGENT_DASHBOARD_USER is separate
+ * from AGENT_PROFILE (the public agent profile page) since the
+ * dashboard shows role/online-status fields the public page has no
+ * use for.
+ */
+export const AGENT_DASHBOARD_USER = {
+  name: "Tunde Bakare",
+  role: "Senior Agent",
+  verified: true,
+  online: true,
+  avatarUrl:
+    "https://lh3.googleusercontent.com/aida-public/AB6AXuBPZL22ut5YNg9BU-fHC7nQe65k8sEpzMbyY_OQDPSwE2LCy6linH1ysClDEU4ndzJWZhnJj37BOPkQNDkx-DZHVs8UBkkOOVQavI-nIk5uOCKj0X0dWcz7mp8LaqmqOg-x-veSyIg3Maz2bjrjG-17nP3t1_Uxc6WPC1IEFR38UlaFTe5HXkbUA0WmRUT4OH3M_0p62cU2rDsvrlS7hntl-DJnnN7c7g4OUCOo5hszQpgUzosA5FCc03LXSaeQHWrPUiDfGquKFv-N",
+};
+
+export const AGENT_DASHBOARD_SUMMARY_STATS = [
+  { label: "Active Listings", value: 18, icon: "list_alt" },
+  { label: "Total Views (Oct)", value: "4,250", icon: "visibility" },
+  { label: "New Leads", value: 12, icon: "person_add" },
+  { label: "Unread Messages", value: 5, icon: "chat_bubble", highlight: true },
+];
+
+// Heights as percentages — drives the simple CSS bar chart. Kept as
+// plain data (not hardcoded per-bar Tailwind classes like the Stitch
+// export) so a real analytics endpoint could replace this array later
+// without touching the chart's markup at all.
+export const LISTING_VIEWS_CHART = [
+  { label: "01 Oct", heightPercent: 40 },
+  { label: "05 Oct", heightPercent: 65 },
+  { label: "10 Oct", heightPercent: 50 },
+  { label: "15 Oct", heightPercent: 85 },
+  { label: "20 Oct", heightPercent: 70 },
+  { label: "25 Oct", heightPercent: 95 },
+  { label: "Today", heightPercent: 60 },
+];
+
+export const RECENT_INQUIRIES = [
+  {
+    id: "inq1",
+    buyerName: "Chioma Obi",
+    buyerAvatarUrl:
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuBBg2bSHqkZ__4wZRcMBoHDk1P1eFxXsEE4BVdo2oTJ9Ky02NFYrA-0_aSRvOWX6Qz2ifW-rOB17iKyRmnkWDGFLEmg98pMQoVy5Vf3ieqSQuHGYcMB12q51jTXONCahLFBT5CLFM8IE19XgqJC2-_ESVYOV-P_FwzjgC121ngMm8JqJIWwnTLAhkKAoFvc6ZqBhlZ7tK-keyGSh6yGL3GJwD30YZ6WzN2cB8uhRsrZk2j4l4doljB87lqbEABDj1_DOhmDSLWjDAMC",
+    propertyTitle: "Luxury 4 Bedroom Duplex",
+    propertyImageUrl:
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuAVS78KV5Mlekv6KczoNWZJluyTVdKU8mNns5llzqdeH7b9XgFWSEoB84YGK2UqHBwBBcKmczXIsh3iUN4FKYbvLjy2mMg5draaKOW2DUO5eHmVY3p4W2Sx-PpH33Ydv7_-mim4Nk3oaVjgGCa77a5DAJzWjTbHXNdplzSTUbnvZmcxiOPZkClQFTFWPyqmlsKmUT4N1yaadiYvVCQqK3m7GXenFtZBORE0Gmoou3RG1dw-TKDiplus6VH9_IMR6iLiEv7A6fcN8B78",
+    formattedPrice: "₦150,000,000",
+    message: "Is the price negotiable?",
+    timeAgo: "2h ago",
+  },
+  {
+    id: "inq2",
+    buyerName: "Segun Williams",
+    buyerAvatarUrl:
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuA8bC7oSkCE4eSm2lObjaS2uwlvpQaL_unTUkTEiD8hUwKZd_CMFz_xEbZeY1ynQaLGGEwE4U2wU3j8jt3khx6ff_UPpokm0YgNH1eF931IIzOMeJ61knAAr4dPXJDO7ocOxUZCp-o4DxhlfagGuS_ifEMFKg_Ke1D83MZkPR8jN-JwI4P53vk8RWdeZYtSVqzdyyvQfOU9jDE3UdacOtj4eoQYJwmop_2wlWrGiFERibkelkCwyxBRrv38UYK47__PdT7TEEbtwaEz",
+    propertyTitle: "Eko Atlantic Penthouse",
+    propertyImageUrl:
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuBmYR4QXkmx9LEuM0WWraAdkg2171XJFYmu7RCjZy2hbhoo9t-REXxhxBuOPxpamNHD66zjWXgkRqfH1IyT2hwOYh2cDjCyK4qI3BYZLQBZYFFZC_SkQvtO9630gur3AyGQZvmN8U2BvvGfQaHjflyStYCisWQbtgcvck-qX7mRYTBFVo4jPqswQn7Z8JevLXv2_-pIuxiEPsOnovdSEDKqOW73orNcTUtucK0F5kP50I2giR1CKV8JReGfSUY0KkSu_7xIzoRnQNZa",
+    formattedPrice: "₦420,000,000",
+    message: "When can I schedule a viewing?",
+    timeAgo: "5h ago",
+  },
+];

@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Outlet } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import SearchResultsPage from "./pages/SearchResultsPage";
 import PropertyDetailPage from "./pages/PropertyDetailPage";
@@ -15,11 +15,19 @@ import VerifyPhonePage from "./pages/VerifyPhonePage";
 import LoginPage from "./pages/LoginPage";
 import ForgotPasswordPage from "./pages/ForgotPasswordPage";
 import ResetPasswordPage from "./pages/ResetPasswordPage";
-import AgentVerificationPlaceholderPage from "./pages/AgentVerificationPlaceholderPage";
 import ReportListingPage from "./pages/ReportListingPage";
 import DashboardLayout from "./components/DashboardLayout";
 import DashboardOverviewPage from "./pages/DashboardOverviewPage";
 import FavoritesPage from "./pages/FavoritesPage";
+import AlertsPage from "./pages/AlertsPage";
+import MessagesPage from "./pages/MessagesPage";
+import AgentApplicationStep1Page from "./pages/AgentApplicationStep1Page";
+import AgentApplicationStep2Page from "./pages/AgentApplicationStep2Page";
+import AgentApplicationStep3Page from "./pages/AgentApplicationStep3Page";
+import AgentApplicationReviewPage from "./pages/AgentApplicationReviewPage";
+import { AgentApplicationProvider } from "./context/AgentApplicationContext";
+import AgentDashboardLayout from "./components/AgentDashboardLayout";
+import AgentDashboardOverviewPage from "./pages/AgentDashboardOverviewPage";
 
 /**
  * Real routing, replacing the temporary dev-only page switcher.
@@ -32,11 +40,12 @@ import FavoritesPage from "./pages/FavoritesPage";
  * per the person's request — real copy will replace the filler text
  * inside each page file, but the routes and navigation are real now.
  *
- * /agents/verify and /agents/:id can be declared in any order — React
- * Router v6 ranks routes by specificity (static segments beat dynamic
- * ones), not by declaration order like v5 did, so /agents/verify
- * always wins against that exact path regardless of where it's listed.
- * Kept it above /agents/:id anyway for readability, not correctness.
+ * /agents/apply (and its nested wizard steps) and /agents/:id can be
+ * declared in any order — React Router v6 ranks routes by specificity
+ * (static segments beat dynamic ones), not by declaration order like
+ * v5 did, so /agents/apply always wins against that exact path
+ * regardless of where it's listed. Kept it above /agents/:id anyway
+ * for readability, not correctness.
  */
 export default function App() {
   return (
@@ -48,13 +57,32 @@ export default function App() {
       <Route path="/land" element={<SearchResultsPage />} />
       <Route path="/listing/:id" element={<PropertyDetailPage />} />
       <Route path="/listing/:id/report" element={<ReportListingPage />} />
-      <Route path="/agents/verify" element={<AgentVerificationPlaceholderPage />} />
       <Route path="/agents/:id" element={<AgentProfilePage />} />
+      <Route
+        path="/agents/apply"
+        element={
+          <AgentApplicationProvider>
+            <Outlet />
+          </AgentApplicationProvider>
+        }
+      >
+        <Route index element={<AgentApplicationStep1Page />} />
+        <Route path="location" element={<AgentApplicationStep2Page />} />
+        <Route path="documents" element={<AgentApplicationStep3Page />} />
+      </Route>
+      <Route path="/agents/apply/review" element={<AgentApplicationReviewPage />} />
+      <Route path="/agent-dashboard" element={<AgentDashboardLayout />}>
+        <Route index element={<AgentDashboardOverviewPage />} />
+        {/* verifications, listings, messages, settings routes will slot in
+            here once those screens exist — AgentDashboardSidebar already
+            links to all five */}
+      </Route>
       <Route path="/dashboard" element={<DashboardLayout />}>
         <Route index element={<DashboardOverviewPage />} />
         <Route path="favorites" element={<FavoritesPage />} />
-        {/* alerts, messages, settings routes will slot in here once those
-            screens exist — DashboardSidebar already links to all five */}
+        <Route path="alerts" element={<AlertsPage />} />
+        <Route path="messages" element={<MessagesPage />} />
+        {/* settings route will slot in here once that screen exists */}
       </Route>
       <Route path="/signup" element={<SignupPage />} />
       <Route path="/verify-phone" element={<VerifyPhonePage />} />
